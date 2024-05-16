@@ -5,20 +5,23 @@ const todos = ref (['estudiar'])
 const todo = ref('')
 
 function add () {
-    console.log(todo.value)
-    todos.value.unshift(todo.value)
+    // console.log(todo.value)
+    // todos.value.unshift(todo.value)
+    // todo.value = ''
+    if (todo.value.trim()) {
+    todos.value.unshift(todo.value.trim())
     todo.value = ''
-
-    if (todo.value = ''){
-
-    }
-    else {
-        todos.value.unshift(todo.value)
-    }
+  }
 }
+
+function borrar (index) {
+    todos.value.splice(index, 1)
+}
+
 </script>
 
 <template>
+
 <div class="rounded shadow-md bg-slate-200 max-w-96 mx-auto mt-12 py-6 px-5 cursor-default ">
     <div class="">
         <input v-model="todo" class="w-4/5 outline-none rounded px-2"/>
@@ -31,7 +34,7 @@ function add () {
                 {{ todo }}
 
                 <div class="space-x-1">
-                    <button class="bg-red-700 outline-none text-white text-center rounded py-1 px-1">Borrar</button>
+                    <button @click="borrar(index)" class="bg-red-700 outline-none text-white text-center rounded py-1 px-1">Borrar</button>
                     <button class="bg-yellow-300 outline-none text-white text-center rounded py-1 px-1">editar</button>
                 </div>
 
