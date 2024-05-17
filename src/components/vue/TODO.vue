@@ -14,10 +14,16 @@ function add () {
   }
 }
 
-function borrar (index) {
-    todos.value.splice(index, 1)
+function borrar (i) {
+    todos.value.splice(i, 1)
 }
 
+function editar (i){
+    const nuevoValor = prompt("Editar tarea:", todos.value[i])
+  if (nuevoValor !== null && nuevoValor.trim()) {
+    todos.value[i] = nuevoValor.trim()
+  }
+}
 </script>
 
 <template>
@@ -34,8 +40,8 @@ function borrar (index) {
                 {{ todo }}
 
                 <div class="space-x-1">
-                    <button @click="borrar(index)" class="bg-red-700 outline-none text-white text-center rounded py-1 px-1">Borrar</button>
-                    <button class="bg-yellow-300 outline-none text-white text-center rounded py-1 px-1">editar</button>
+                    <button @click="borrar(i)" class="bg-red-700 outline-none text-white text-center rounded py-1 px-1">Borrar</button>
+                    <button @click="editar(i)" class="bg-yellow-300 outline-none text-white text-center rounded py-1 px-1">editar</button>
                 </div>
 
             </div>
